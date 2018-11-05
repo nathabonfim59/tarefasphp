@@ -53,7 +53,7 @@
             <div class="card-body">
                 <?php foreach ($lista_tarefas as $tarefa): ?>
                     <div class="bd-callout bd-callout-info">
-                        <h4><?php echo $tarefa['nome']; ?></h4>
+                        <h2><?php echo $tarefa['nome']; ?></h2>
                         <br>
                         <p><?php echo $tarefa['descricao']; ?></p>
                         <hr>

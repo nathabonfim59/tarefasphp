@@ -5,7 +5,7 @@ session_start();
 if (isset($_GET['nome']) && $_GET['nome'] != '') {
     $tarefa = array();
     
-    $tarefa['name'] = $_GET['nome'];
+    $tarefa['nome'] = $_GET['nome'];
 
     if (isset($_GET['descricao']) && $_GET['descricao'] != '') {
         $tarefa['descricao'] = $_GET['descricao'];
@@ -24,7 +24,7 @@ if (isset($_GET['nome']) && $_GET['nome'] != '') {
     if (isset($_GET['concluida']) && $_GET['concluida'] != '') {
         $tarefa['concluida'] = $_GET['concluida'];
     } else {
-        $tarefa['concluida'] = '';
+        $tarefa['concluida'] = 'Não';
     }
     
     $_SESSION['lista_tarefas'][] = $tarefa;

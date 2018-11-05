@@ -53,7 +53,22 @@
             <div class="card-body">
                 <?php foreach ($lista_tarefas as $tarefa): ?>
                     <div class="bd-callout bd-callout-info">
-                        <h4><?php echo $tarefa; ?></h4>
+                        <h4><?php echo $tarefa['nome']; ?></h4>
+                        <br>
+                        <p><?php echo $tarefa['descricao']; ?></p>
+                        <hr>
+                        <div class="mt-3">
+                            <h4>Prazo</h4>
+                            <p class="py-2 pl-4 pr-4 bg-info rounded font-weight-bold text-white"><?php echo $tarefa['prazo']; ?></p>
+                        </div>
+                        <div class="mt-3">
+                            <h4>Prioridade</h4>
+                            <p class="py-2 pl-4 pr-4 bg-info rounded font-weight-bold text-white"><?php echo $tarefa['prioridade']; ?></p>
+                        </div>
+                        <div class="mt-3">
+                            <h4>Concluída</h4>
+                            <p class="py-2 pl-4 pr-4 bg-info rounded font-weight-bold text-white"><?php echo $tarefa['concluida']; ?></p>
+                        </div>
                     </div>
                         
                     </tr>

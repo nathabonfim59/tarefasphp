@@ -1,5 +1,5 @@
 # tarefasphp
-Aplicação para gerenciamento de tarefas utilizando sessões
+Aplicação para gerenciamento de tarefas utilizando sessões.
 
 # Funcionalidades
 - Bootstrap 4

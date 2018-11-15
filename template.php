@@ -39,7 +39,7 @@
             </fieldset>
 
             <div class="custom-control custom-checkbox mt-2">
-                <input type="checkbox" class="custom-control-input" name="concluida" value="sim" id="tarefaStatus">
+                <input type="checkbox" class="custom-control-input" name="concluida" value="1" id="tarefaStatus">
                 <label class="custom-control-label" for="tarefaStatus">Tarefa concluida</label>
             </div>
 
@@ -60,7 +60,7 @@
                         <hr>
                         <div class="mt-3">
                             <h4>Prazo</h4>
-                            <p class="py-2 pl-4 pr-4 bg-info rounded font-weight-bold text-white"><?php echo $tarefa['prazo']; ?></p>
+                            <p class="py-2 pl-4 pr-4 bg-info rounded font-weight-bold text-white"><?php echo traduz_data_para_exibir($tarefa['prazo']) ?></p>
                         </div>
                         <div class="mt-3">
                             <h4>Prioridade</h4>
@@ -68,7 +68,7 @@
                         </div>
                         <div class="mt-3">
                             <h4>Concluída</h4>
-                            <p class="py-2 pl-4 pr-4 bg-info rounded font-weight-bold text-white"><?php echo $tarefa['concluida']; ?></p>
+                            <p class="py-2 pl-4 pr-4 bg-info rounded font-weight-bold text-white"><?php echo traduiz_concluida($tarefa['concluida']); ?></p>
                         </div>
                     </div>
                         

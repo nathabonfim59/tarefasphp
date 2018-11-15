@@ -39,3 +39,29 @@ function traduz_data_para_banco($data) {
 
     return $data_mysql;
 }
+
+function traduz_data_para_exibir($data) {
+    if ($data == "" OR $data == "0000-00-00") {
+        return "";
+    }
+
+    $dados = explode("-", $data);
+
+    $data_exibir = "{$dados[2]}/{$dados[1]}/{$dados[0]}";
+
+    return $data_exibir;
+}
+
+/**
+ * Traduz um inteiro (0 ou 1) para "Sim" ou "Não"
+ *
+ * @param integer $concluida Concluida ou não (0 ou 1)
+ * @return string
+ */
+function traduiz_concluida($concluida) {
+    if ($concluida == 1) {
+        return "Sim";
+    } else if ($concluida == 0) {
+        return "Não";
+    }
+}

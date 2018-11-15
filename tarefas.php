@@ -25,9 +25,9 @@ if (isset($_GET['nome']) && $_GET['nome'] != '') {
     }
 
     if (isset($_GET['concluida']) && $_GET['concluida'] != '') {
-        $tarefa['concluida'] = $_GET['concluida'];
+        $tarefa['concluida'] = 1;
     } else {
-        $tarefa['concluida'] = 'Não';
+        $tarefa['concluida'] = 0;
     }
     
     gravar_tarefa($conexao, $tarefa);

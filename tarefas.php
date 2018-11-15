@@ -8,18 +8,20 @@ session_start();
 if (isset($_GET['nome']) && $_GET['nome'] != '') {
     $tarefa = array();
     
-    $tarefa['nome'] = $_GET['nome'];
+    $tarefa['nome'] = htmlspecialchars($_GET['nome']);
 
     if (isset($_GET['descricao']) && $_GET['descricao'] != '') {
-        $tarefa['descricao'] = $_GET['descricao'];
+        $tarefa['descricao'] = htmlspecialchars($_GET['descricao']);
     } else {
         $tarefa['descricao'] = '';
     }
 
-    $tarefa['prioridade'] = $_GET['prioridade'];
+    $tarefa['prioridade'] = htmlspecialchars($_GET['prioridade']);
 
     if (isset($_GET['prazo']) && $_GET['prazo'] != '') {
-        $tarefa['prazo'] = traduz_data_para_banco($_GET['prazo']);
+        $tarefa['prazo'] = traduz_data_para_banco(
+            htmlspecialchars($_GET['prazo'])
+        );
     } else {
         $tarefa['prazo'] = '';
     }

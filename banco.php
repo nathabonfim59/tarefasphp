@@ -42,6 +42,12 @@ function buscar_tarefas($conexao) {
  * @return void
  */
 function gravar_tarefa($conexao, $tarefa) {
+    if ($tarefa['prazo'] != '') {
+        $tarefa['prazo'] = "'{$tarefa['prazo']}'";
+    } else {
+        $tarefa['prazo'] = 'null';
+    }
+
     $sqlGravar = "INSERT INTO tarefas 
     (nome, descricao, prioridade, prazo)
     VALUES
@@ -49,10 +55,8 @@ function gravar_tarefa($conexao, $tarefa) {
         '{$tarefa['nome']}',
         '{$tarefa['descricao']}',
         {$tarefa['prioridade']},
-        '{$tarefa['prazo']}'
+        {$tarefa['prazo']}
     )";
-
-    echo $sqlGravar;
 
     mysqli_query($conexao, $sqlGravar);
 }

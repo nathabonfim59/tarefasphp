@@ -24,16 +24,16 @@
                 <p class="m-0 mt-2">Prioridade:</p>
                 <div class="form-inline bg-white border p-2 rounded">
                     <div class="custom-control custom-radio mx-3">
-                        <input type="radio" class="custom-control-input" name="prioridade" required value="baixa" id="prioridadeBaixa">
+                        <input type="radio" class="custom-control-input" name="prioridade" required value="1" id="prioridadeBaixa">
                         <label class="custom-control-label" for="prioridadeBaixa">Baixa</label>
                     </div>
                     <div class="custom-control custom-radio mx-3">
-                        <input type="radio" class="custom-control-input" name="prioridade" required  value="media" id="prioridadeMedia">
+                        <input type="radio" class="custom-control-input" name="prioridade" required  value="2" id="prioridadeMedia">
                         <label class="custom-control-label" for="prioridadeMedia">Média</label>
                     </div>
                     <div class="custom-control custom-radio mx-3">
-                        <input type="radio" class="custom-control-input" name="prioridade" required value="alta" id="prioridadeAlta">
-                        <label class="custom-control-label" for="prioridadeAlta"> Alta</label>
+                        <input type="radio" class="custom-control-input" name="prioridade" required value="3" id="prioridadeAlta">
+                        <label class="custom-control-label" for="prioridadeAlta">Alta</label>
                     </div>
                 </div>
             </fieldset>
@@ -50,6 +50,7 @@
             <div class="card-header">
                 Tarefas
             </div>
+
             <div class="card-body">
                 <?php foreach ($lista_tarefas as $tarefa): ?>
                     <div class="bd-callout bd-callout-info">
@@ -63,7 +64,7 @@
                         </div>
                         <div class="mt-3">
                             <h4>Prioridade</h4>
-                            <p class="py-2 pl-4 pr-4 bg-info rounded font-weight-bold text-white"><?php echo $tarefa['prioridade']; ?></p>
+                            <p class="py-2 pl-4 pr-4 bg-info rounded font-weight-bold text-white"><?php echo traduz_prioridade($tarefa['prioridade']) ?></p>
                         </div>
                         <div class="mt-3">
                             <h4>Concluída</h4>

@@ -1,9 +1,11 @@
 <?php
 
+session_start();
+
 include "banco.php";
 include "ajudantes.php";
 
-session_start();
+$exibir_tabela = true;
 
 if (isset($_GET['nome']) && $_GET['nome'] != '') {
     $tarefa = array();
@@ -33,8 +35,19 @@ if (isset($_GET['nome']) && $_GET['nome'] != '') {
     }
     
     gravar_tarefa($conexao, $tarefa);
+    header('Location: tarefas.php');
+    die();
 }
 
 $lista_tarefas = buscar_tarefas($conexao);
+
+$tarefa = array(
+    'id' => 0,
+    'nome' => '',
+    'descricao' => '',
+    'prazo' => '',
+    'prioridade' => 1,
+    'concluida' => ''
+);
 
 include "template.php";

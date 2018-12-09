@@ -12,70 +12,11 @@
     <div class="container">
         <h1 class="text-center mt-5 mb-5">Gerenciador de tarefas</h1>
 
-        <form action="" class="bg-light my-3 p-3 border">
-            <input type="text" name="nome" id="" class="form-control mb-2" placeholder="Nova tarefa" required>
-            <textarea name="descricao" id="" class="form-control mb-2" placeholder="Descrição"></textarea>
+        <?php include('formulario.php');?>
 
-            <fieldset>
-                Prazo (Opcional):
-                <input type="text" name="prazo" id="" class="form-control">
-            </fieldset>
-            <fieldset class="">
-                <p class="m-0 mt-2">Prioridade:</p>
-                <div class="form-inline bg-white border p-2 rounded">
-                    <div class="custom-control custom-radio mx-3">
-                        <input type="radio" class="custom-control-input" name="prioridade" required value="1" id="prioridadeBaixa">
-                        <label class="custom-control-label" for="prioridadeBaixa">Baixa</label>
-                    </div>
-                    <div class="custom-control custom-radio mx-3">
-                        <input type="radio" class="custom-control-input" name="prioridade" required  value="2" id="prioridadeMedia">
-                        <label class="custom-control-label" for="prioridadeMedia">Média</label>
-                    </div>
-                    <div class="custom-control custom-radio mx-3">
-                        <input type="radio" class="custom-control-input" name="prioridade" required value="3" id="prioridadeAlta">
-                        <label class="custom-control-label" for="prioridadeAlta">Alta</label>
-                    </div>
-                </div>
-            </fieldset>
-
-            <div class="custom-control custom-checkbox mt-2">
-                <input type="checkbox" class="custom-control-input" name="concluida" value="1" id="tarefaStatus">
-                <label class="custom-control-label" for="tarefaStatus">Tarefa concluida</label>
-            </div>
-
-            <input type="submit" value="Cadastrar" class="btn btn-primary mt-2">
-        </form>
-
-        <div class="card">
-            <div class="card-header">
-                Tarefas
-            </div>
-
-            <div class="card-body">
-                <?php foreach ($lista_tarefas as $tarefa): ?>
-                    <div class="bd-callout bd-callout-info">
-                        <h2><?php echo $tarefa['nome']; ?></h2>
-                        <br>
-                        <p><?php echo $tarefa['descricao']; ?></p>
-                        <hr>
-                        <div class="mt-3">
-                            <h4>Prazo</h4>
-                            <p class="py-2 pl-4 pr-4 bg-info rounded font-weight-bold text-white"><?php echo traduz_data_para_exibir($tarefa['prazo']) ?></p>
-                        </div>
-                        <div class="mt-3">
-                            <h4>Prioridade</h4>
-                            <p class="py-2 pl-4 pr-4 bg-info rounded font-weight-bold text-white"><?php echo traduz_prioridade($tarefa['prioridade']) ?></p>
-                        </div>
-                        <div class="mt-3">
-                            <h4>Concluída</h4>
-                            <p class="py-2 pl-4 pr-4 bg-info rounded font-weight-bold text-white"><?php echo traduiz_concluida($tarefa['concluida']); ?></p>
-                        </div>
-                    </div>
-                        
-                    </tr>
-                <?php endforeach; ?>
-            </div>
-        </div>
+        <?php if ($exibir_tabela): ?>
+            <?php include('tabela.php'); ?>
+        <?php endif; ?>
     </div>
 </body>
 </html>

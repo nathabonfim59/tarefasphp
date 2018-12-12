@@ -1,6 +1,11 @@
 # tarefasphp
 Aplicação para gerenciamento de tarefas utilizando sessões.
 
+# Funcionalidades
+- Adição de tarefas
+- Atualização de tarefas
+- Remoção de tarefas
+
 # Stack
 - MySQL
 - Bootstrap 4

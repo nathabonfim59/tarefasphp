@@ -35,4 +35,7 @@
             </div>
 
             <input type="submit" value="<?php echo ($tarefa['id'] > 0) ? 'Atualizar' : 'Cadastrar'; ?>" class="btn btn-primary mt-2">
+            <?php if (!$exibir_tabela): ?>
+                <a href="tarefas.php" class="btn btn-danger mt-2">Cancelar</a>
+            <?php endif; ?>
         </form>

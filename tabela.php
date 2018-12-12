@@ -7,6 +7,7 @@
                 <?php foreach ($lista_tarefas as $tarefa): ?>
                     <div class="bd-callout bd-callout-info">
                         <a class="badge badge-primary" href="editar.php?id=<?php echo $tarefa['id'];?>">Editar</a>
+                        <a class="badge badge-warning" href="duplicar.php?id=<?php echo $tarefa['id'];?>">Duplicar</a>
                         <h2><?php echo $tarefa['nome']; ?></h2>
                         <br>
                         <p><?php echo $tarefa['descricao']; ?></p>

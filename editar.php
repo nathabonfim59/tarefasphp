@@ -38,6 +38,5 @@ if (isset($_GET['nome']) &&  $_GET['nome'] != '') {
     die();
 }
 
-$tarefa = buscar_tarefa($conexao, $_GET['id']);
 
 include "template.php";

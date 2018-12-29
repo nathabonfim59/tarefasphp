@@ -9,4 +9,4 @@ $dados_tarefa = buscar_tarefa($conexao, $tarefa_id);
 gravar_tarefa($conexao, $dados_tarefa);
 
 
-header('Location: tarefas.php');
+header('Location: /');

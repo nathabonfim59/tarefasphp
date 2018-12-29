@@ -2,8 +2,9 @@
 
 ?>
 
-<form action="" class="bg-light my-3 p-3 border">
+<form action="/" class="bg-light my-3 p-3 border">
             <input type="hidden" name="id" value="<?php echo $tarefa['id']; ?>">
+            <input type="hidden" name="operacao" value="<?php echo ($exibir_tabela) ? 'adicionar' : 'editar'; ?>">
             <input type="text" name="nome" id="" class="form-control mb-2" placeholder="Nova tarefa" required value="<?php echo $tarefa['nome']; ?>">
             <textarea name="descricao" id="" class="form-control mb-2" placeholder="Descrição"><?php echo $tarefa['descricao']; ?></textarea>
 

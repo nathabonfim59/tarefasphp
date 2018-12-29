@@ -9,22 +9,20 @@ $exibir_tabela = true;
 
 $operacao = (isset($_GET['operacao'])) ? $_GET['operacao'] : '';
 
-if (isset($_GET['nome']) && $_GET['nome'] != '') {
+if (parametro_requisicao('nome')) {
     $tarefa = array();
 
-    $tarefa['id'] = $_GET['id'];
-
+    $tarefa['id'] = filtrar_numeros($_GET['id']);
     $tarefa['nome'] = htmlspecialchars($_GET['nome']);
+    $tarefa['prioridade'] = filtrar_numeros($_GET['prioridade']);
 
-    if (isset($_GET['descricao']) && $_GET['descricao'] != '') {
+    if (parametro_requisicao('descricao')) {
         $tarefa['descricao'] = htmlspecialchars($_GET['descricao']);
     } else {
         $tarefa['descricao'] = '';
     }
 
-    $tarefa['prioridade'] = htmlspecialchars($_GET['prioridade']);
-
-    if (isset($_GET['prazo']) && $_GET['prazo'] != '') {
+    if (parametro_requisicao('prazo')) {
         $tarefa['prazo'] = traduz_data_para_banco(
             htmlspecialchars($_GET['prazo'])
         );
@@ -32,21 +30,29 @@ if (isset($_GET['nome']) && $_GET['nome'] != '') {
         $tarefa['prazo'] = '';
     }
 
-    if (isset($_GET['concluida']) && $_GET['concluida'] != '') {
-        $tarefa['concluida'] = 1;
+    if (parametro_requisicao('concluida')) {
+        $tarefa['concluida'] = filtrar_numeros(
+            $_GET['concluida']
+        );
     } else {
         $tarefa['concluida'] = 0;
     }
 
+    // Verifica se a tarefa é para ser editada ou
+    // atualizada com base no parâmetros $_GET['operacao']
     if ($operacao == 'editar') {
         editar_tarefa($conexao, $tarefa);
-    } else if ($operacao = 'adicionar') {
+        $exibir_tabela = false;
+    } else if ($operacao == 'adicionar') {
         gravar_tarefa($conexao, $tarefa);
     }
 
-    header('Location: tarefas.php');
+    header('Location: /');
     die();
 }
+
+// Caso não seja uma atualização/gravação
+// de tarefas
 
 $lista_tarefas = buscar_tarefas($conexao);
 
@@ -56,15 +62,7 @@ $tarefa = array(
     'descricao' => '',
     'prazo' => '',
     'prioridade' => 1,
-    'concluida' => ''
+    'concluida' => 0
 );
-
-$requisicaoEditar = isset($_GET['operacao']) && isset($_GET['id']);
-
-if ($requisicaoEditar && $_GET['operacao'] == 'editar') {
-    $tarefa = buscar_tarefa($conexao, $_GET['id']);
-    error_log("Hello");
-    $exibir_tabela = false;
-}
 
 include "template.php";

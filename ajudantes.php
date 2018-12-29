@@ -65,3 +65,47 @@ function traduiz_concluida($concluida) {
         return "Não";
     }
 }
+
+/**
+ * Verifica se um parâmetro $_GET ou $_POST existe e não é
+ * igual a ''
+ *
+ * @param string $parametro parametro da requisição
+ * @param bool $post Caso o parâmetro seja $_POST
+ * @return bool
+ */
+function parametro_requisicao($parametro, $post = false) {
+    // Caso não seja especificado, use $_GET
+    $request = (!$post) ? $_GET : $_POST;
+
+    // Verifica se o parametro foi definido 
+    // e se tem algum conteúdo
+    $valid_request = (
+        isset($request[$parametro]) &&
+        $request[$parametro] != ''
+    );
+
+    if ($valid_request) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+/**
+ * Verifica se todos os dados informados em uma
+ * string são números e retorna falso caso não seja
+ *
+ * @param string $string String a ser analisada
+ * @return int|bool
+ */
+function filtrar_numeros($string) {
+    $valid_numeric = ctype_xdigit($string);
+
+    if ($valid_numeric) {
+        return (int)$string;
+    } else {
+        return false;
+    }
+}

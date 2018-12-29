@@ -1,5 +1,14 @@
 <?php 
+    if (parametro_requisicao('operacao')) {
+        if ($_GET['operacao'] == 'editar') {
+            $tarefa = buscar_tarefa(
+                $conexao,
+                filtrar_numeros($_GET['id'])
+            );
 
+            $exibir_tabela = false;
+        }
+    }
 ?>
 
 <form action="/" class="bg-light my-3 p-3 border">
@@ -37,6 +46,6 @@
 
             <input type="submit" value="<?php echo ($tarefa['id'] > 0) ? 'Atualizar' : 'Cadastrar'; ?>" class="btn btn-primary mt-2">
             <?php if (!$exibir_tabela): ?>
-                <a href="tarefas.php" class="btn btn-danger mt-2">Cancelar</a>
+                <a href="/" class="btn btn-danger mt-2">Cancelar</a>
             <?php endif; ?>
         </form>

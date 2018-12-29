@@ -9,12 +9,20 @@ $exibir_tabela = true;
 
 $operacao = (isset($_GET['operacao'])) ? $_GET['operacao'] : '';
 
-if (parametro_requisicao('nome')) {
+if (parametro_requisicao('nome') || parametro_requisicao('operacao')) {
     $tarefa = array();
 
-    $tarefa['id'] = filtrar_numeros($_GET['id']);
-    $tarefa['nome'] = htmlspecialchars($_GET['nome']);
-    $tarefa['prioridade'] = filtrar_numeros($_GET['prioridade']);
+    if (parametro_requisicao('id')) {
+        $tarefa['id'] = filtrar_numeros($_GET['id']);
+    }
+    
+    if (parametro_requisicao('nome')) {
+        $tarefa['nome'] = htmlspecialchars($_GET['nome']);
+    } 
+
+    if (parametro_requisicao('prioridade')) {
+        $tarefa['prioridade'] = filtrar_numeros($_GET['prioridade']);
+    }
 
     if (parametro_requisicao('descricao')) {
         $tarefa['descricao'] = htmlspecialchars($_GET['descricao']);
@@ -40,11 +48,27 @@ if (parametro_requisicao('nome')) {
 
     // Verifica se a tarefa é para ser editada ou
     // atualizada com base no parâmetros $_GET['operacao']
-    if ($operacao == 'editar') {
-        editar_tarefa($conexao, $tarefa);
-        $exibir_tabela = false;
-    } else if ($operacao == 'adicionar') {
-        gravar_tarefa($conexao, $tarefa);
+    switch($operacao) {
+        case 'editar_form':
+            include "template.php";
+            die();
+            break;
+        case 'editar':
+            editar_tarefa($conexao, $tarefa);
+            break;
+        case 'adicionar':
+            gravar_tarefa($conexao, $tarefa);
+            break;
+        case 'duplicar':
+            $dados_tarefa = buscar_tarefa($conexao, $_GET['id']);
+            gravar_tarefa($conexao, $dados_tarefa);
+            break;
+        case 'remover':
+            remover_tarefa($conexao, $_GET['id']);
+            break;
+        case 'remover_concluidas':
+            remover_tarefas_concluidas($conexao);
+            break;
     }
 
     header('Location: /');

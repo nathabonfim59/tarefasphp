@@ -1,6 +1,6 @@
 <?php 
     if (parametro_requisicao('operacao')) {
-        if ($_GET['operacao'] == 'editar') {
+        if ($_GET['operacao'] == 'editar_form') {
             $tarefa = buscar_tarefa(
                 $conexao,
                 filtrar_numeros($_GET['id'])

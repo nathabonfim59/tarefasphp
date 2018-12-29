@@ -111,3 +111,17 @@ function remover_tarefa($conexao, $id) {
 
     mysqli_query($conexao, $sqlRemover);
 }
+
+
+/**
+ * Remove as tarefas que estão marcadas como
+ * concluídas
+ *
+ * @param mysqli $conexao Conexão com o banco   
+ * @return void
+ */
+function remover_tarefas_concluidas($conexao) {
+    $sqlRemover = "DELETE FROM tarefas WHERE concluida = 1";
+
+    mysqli_query($conexao, $sqlRemover);
+}
